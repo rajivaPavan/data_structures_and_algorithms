@@ -1,0 +1,21 @@
+# ninja log v5
+0	587	7006600897111961	CMakeFiles/Sorting.dir/main.cpp.obj	d2192737cb0e18fd
+12	597	7006607377124288	CMakeFiles/Sorting.dir/sort.cpp.obj	f6a401e9b1bd8ca5
+6	648	7006607377633255	CMakeFiles/Sorting.dir/sorting_handler.cpp.obj	b8586c1612137a6d
+648	927	7006607380195628	Sorting.exe	fe47ab314b6d8c24
+9	776	7006607775182098	CMakeFiles/Sorting.dir/main.cpp.obj	d2192737cb0e18fd
+778	981	7006607777146501	Sorting.exe	fe47ab314b6d8c24
+5	636	7006608057363711	CMakeFiles/Sorting.dir/sorting_handler.cpp.obj	b8586c1612137a6d
+638	839	7006608059309913	Sorting.exe	fe47ab314b6d8c24
+5	577	7006609533369009	CMakeFiles/Sorting.dir/main.cpp.obj	d2192737cb0e18fd
+578	765	7006609535188095	Sorting.exe	fe47ab314b6d8c24
+5	664	7006610605638972	CMakeFiles/Sorting.dir/main.cpp.obj	d2192737cb0e18fd
+665	849	7006610607424776	Sorting.exe	fe47ab314b6d8c24
+6	673	7006615806335456	CMakeFiles/Sorting.dir/main.cpp.obj	d2192737cb0e18fd
+674	869	7006615808231768	Sorting.exe	fe47ab314b6d8c24
+8	707	7006616317670727	CMakeFiles/Sorting.dir/main.cpp.obj	d2192737cb0e18fd
+708	885	7006616319383932	Sorting.exe	fe47ab314b6d8c24
+8	610	7006617664053401	CMakeFiles/Sorting.dir/main.cpp.obj	d2192737cb0e18fd
+612	797	7006617665865233	Sorting.exe	fe47ab314b6d8c24
+6	659	7006629666702878	CMakeFiles/Sorting.dir/main.cpp.obj	d2192737cb0e18fd
+660	867	7006629668719826	Sorting.exe	fe47ab314b6d8c24
