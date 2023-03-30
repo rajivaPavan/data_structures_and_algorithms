@@ -11,13 +11,12 @@ using namespace std::chrono;
 // declare private functions
 void printArray(int *arr, int n);
 void printAlgorithmName(const string &name);
+int* makeArrayCopy(int* arr, int n);
 
-void sort(int *arr, int n, function<void(int *, int)> sortFunc, const string &algorithmName)
+void sort(int *arr, int n, const function<void(int *, int)>& sortFunc, const string &algorithmName)
 {
     
-    // make copy of arr
-    int *arr_copy = (int *)malloc(sizeof(int) * n);
-    memcpy(arr_copy, arr, sizeof(int) * n);
+    int *arr_copy = makeArrayCopy(arr, n);
 
     // measure time taken to sort array
     auto start = high_resolution_clock::now();
@@ -34,16 +33,19 @@ void sort(int *arr, int n, function<void(int *, int)> sortFunc, const string &al
     cout << "Time taken: " << duration.count() << endl;
 }
 
-void sortVector(vector<int> arr, int n, function<vector<int>(vector<int>, int)> vectorSortFunc, const string &algorithmName){
-
-    vector<int> arr_copy(arr);
+void sort(int arr[], int low, int high, const function<void(int *, int, int)> &sortFunc, const string &algorithmName)
+{
+    int n = high - low + 1;
+    int *arr_copy = makeArrayCopy(arr, n);
 
     // measure time taken to sort array
     auto start = high_resolution_clock::now();
-    vectorSortFunc(arr_copy, n); // sort the new array
+    sortFunc(arr_copy, low, high); // sort the new array
     auto stop = high_resolution_clock::now();
 
     printAlgorithmName(algorithmName);
+
+//    printArray(arr_copy, n);
 
     // print the time taken
     auto duration = duration_cast<microseconds>(stop - start);
@@ -67,4 +69,13 @@ int *readIntArray(int n)
         cin >> *(arr + i);
     }
     return arr;
+}
+
+
+int *makeArrayCopy(int *arr, int n)
+{
+        // make copy of arr
+    int *arr_copy = (int *)malloc(sizeof(int) * n);
+    memcpy(arr_copy, arr, sizeof(int) * n);
+    return arr_copy;
 }

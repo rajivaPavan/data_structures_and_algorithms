@@ -125,6 +125,53 @@ int *Sort::iterativeMergeSort(int *arr, int n)
     return arr;
 }
 
+int *Sort::recursiveQuickSort(int *arr, int low, int high)
+{
+    if(low < high){
+        int partition_index  = partition(arr, low, high);
+        recursiveQuickSort(arr, low, partition_index - 1);
+        recursiveQuickSort(arr, partition_index + 1, high);
+    }
+    return arr;
+}
+
+int *Sort::iterativeQuickSort(int* arr, int low, int high)
+{
+    int n = high - low + 1;
+    // Create an auxiliary stack
+    int* stack = (int*)malloc(n * sizeof(int));
+
+    // initialize top of stack
+    int top = -1;
+
+    // push initial values of low and high to stack
+    stack[++top] = low;
+    stack[++top] = high;
+
+    // Keep popping from stack while is not empty
+    while (top >= 0) {
+        // Pop high and low
+        high = stack[top--];
+        low = stack[top--];
+
+        // Set pivot element at its correct position in sorted array
+        int partition_index = partition(arr, low, high);
+
+        // If there are elements on left side of pivot, then push left side to stack
+        if (partition_index - 1 > low) {
+            stack[++top] = low;
+            stack[++top] = partition_index - 1;
+        }
+
+        // If there are elements on right side of pivot,
+        // then push right side to stack
+        if (partition_index + 1 < high) {
+            stack[++top] = partition_index + 1;
+            stack[++top] = high;
+        }
+    }
+}
+
 int *Sort::merge(int *arr, int l1, int r1, int l2, int r2)
 {
     int *temp = (int *)malloc(sizeof(int) * (r2 - l1 + 1));
@@ -165,6 +212,26 @@ int* Sort::merge(int* left, int left_n, int* right, int right_n){
     for(int i = 0; i<left_n;i++) arr[i] = left[i];
     for(int i = left_n; i<(left_n+right_n);i++) arr[i] = right[i-left_n];
     return merge(arr,0,left_n,0,right_n);
+}
+
+int Sort::partition(int arr[], int low, int high)
+{
+    // pivot (Element to be placed at right position)
+    int pivot = arr[high];
+
+    int i = (low -1);
+
+    for(int j = low; j < high - 1; j++){
+
+        // If current element is smaller than the pivot
+        if(arr[j] < pivot){
+            i++;
+            swap(arr[i], arr[j]);
+        }
+    }
+
+    swap(arr[i+1], arr[high]);
+    return (i + 1);
 }
 
 void printArray(int *arr, int n)

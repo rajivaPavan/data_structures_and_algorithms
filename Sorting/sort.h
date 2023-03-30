@@ -15,11 +15,13 @@ public:
     static void insertionSort(int *arr, int n);
     static int* recursiveMergeSort(int* arr, int n);
     static int* iterativeMergeSort(int* arr, int n);
+    static int* recursiveQuickSort(int* arr, int low, int high);
+    static int* iterativeQuickSort(int* arr, int low, int high);
 
 private:
     
     static int *merge(int *arr, int l1, int r1, int l2, int r2);
     static int *merge(int *left, int left_n, int *right, int right_n);
 
-    virtual int partition(int arr[], int l, int r) = 0;
+    static int partition(int arr[], int low, int high);
 };
