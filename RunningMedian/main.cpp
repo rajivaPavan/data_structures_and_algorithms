@@ -1,9 +1,8 @@
 #include <iostream>
 #include <vector>
-#include <iomanip>
 
 using namespace std;
-int median(vector<int> arr);
+double median(vector<int> arr);
 
 vector<int> optimizedBubbleSort(vector<int> arr);
 
@@ -21,7 +20,7 @@ int main() {
         // optimizedBubbleSort
         stream = optimizedBubbleSort(stream);
         // find median
-        int m = median(stream);
+        double m = median(stream);
         printVector(stream);
         cout << "\t\t\t" << m << endl;
     }
@@ -59,6 +58,9 @@ vector<int> optimizedBubbleSort(vector<int> arr) {
     return arr;
 }
 
-int median(vector<int> arr) {
-    return arr[arr.size()/2];
+double median(vector<int> arr) {
+    int n = arr.size()/2;
+    int mid = n/2;
+    if (n % 2 == 0) return (arr[mid] + arr[mid + 1]) / 2.0;
+    return arr[mid];
 }
