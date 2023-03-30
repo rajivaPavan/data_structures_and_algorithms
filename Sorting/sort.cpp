@@ -91,8 +91,10 @@ int *Sort::recursiveMergeSort(int *arr, int n)
         return arr;
     int mid = (int)n / 2;
     int *left = recursiveMergeSort(arr, n);
+    int left_n = mid;
     int *right = recursiveMergeSort(&arr[mid + 1], n);
-    return arr;
+    int right_n = n - mid;
+    return merge(left, left_n, right, right_n);
 }
 
 int *Sort::iterativeMergeSort(int *arr, int n)
@@ -155,6 +157,14 @@ int *Sort::merge(int *arr, int l1, int r1, int l2, int r2)
         l2++;
     }
     return temp;
+}
+
+int* Sort::merge(int* left, int left_n, int* right, int right_n){
+    //combine two arrays
+    int* arr = (int*)malloc(sizeof(int)*(left_n+right_n));
+    for(int i = 0; i<left_n;i++) arr[i] = left[i];
+    for(int i = left_n; i<(left_n+right_n);i++) arr[i] = right[i-left_n];
+    return merge(arr,0,left_n,0,right_n);
 }
 
 void printArray(int *arr, int n)

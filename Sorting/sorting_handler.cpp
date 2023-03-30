@@ -3,6 +3,7 @@
 #include <iterator>
 #include <chrono>
 #include <functional>
+#include <vector>
 
 using namespace std;
 using namespace std::chrono;
@@ -11,7 +12,7 @@ using namespace std::chrono;
 void printArray(int *arr, int n);
 void printAlgorithmName(const string &name);
 
-void sort(int *arr, int n, const function<void(int *, int)> &sortFunc, const string &algorithmName)
+void sort(int *arr, int n, function<void(int *, int)> sortFunc, const string &algorithmName)
 {
     
     // make copy of arr
@@ -33,7 +34,7 @@ void sort(int *arr, int n, const function<void(int *, int)> &sortFunc, const str
     cout << "Time taken: " << duration.count() << endl;
 }
 
-void sortVector(vector<int> arr, int n, const function<vector<int>(vector<int>, int)> &vectorSortFunc, const string &algorithmName){
+void sortVector(vector<int> arr, int n, function<vector<int>(vector<int>, int)> vectorSortFunc, const string &algorithmName){
 
     vector<int> arr_copy(arr);
 
