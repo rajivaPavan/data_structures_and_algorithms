@@ -59,8 +59,8 @@ vector<int> optimizedBubbleSort(vector<int> arr) {
 }
 
 double median(vector<int> arr) {
-    int n = arr.size()/2;
-    int mid = n/2;
+    int n = arr.size();
+    int mid = (int)(n-1)/2;
     if (n % 2 == 0) return (arr[mid] + arr[mid + 1]) / 2.0;
     return arr[mid];
 }
