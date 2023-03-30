@@ -4,7 +4,7 @@
 using namespace std;
 double median(vector<int> arr);
 
-vector<int> optimizedBubbleSort(vector<int> arr);
+vector<int> insertToSortedArray(vector<int> arr, int element);
 
 void printVector(vector<int> arr);
 
@@ -14,11 +14,8 @@ int main() {
     vector<int> stream;
     cout << "Sorted \t\t Median" << endl;
     for(int i = 0; i < N; i++){
-        //add to stream
-        stream.push_back(data[i]);
-
-        // optimizedBubbleSort
-        stream = optimizedBubbleSort(stream);
+        // insertToSortedArray
+        stream = insertToSortedArray(stream, data[i]);
         // find median
         double m = median(stream);
         printVector(stream);
@@ -37,24 +34,15 @@ void printVector(vector<int> arr) {
     cout << "]";
 }
 
-vector<int> optimizedBubbleSort(vector<int> arr) {
-    bool swapped = false;
+vector<int> insertToSortedArray(vector<int> arr, int element) {
     int n = arr.size();
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < n - 1; j++)
-        {
-            if (arr[j] > arr[j + 1])
-            {
-                swap(arr[j], arr[j + 1]);
-                swapped = true;
-            }
-        }
-
-        if (!swapped)
-            break;
+    if(n == 0) {
+        arr.push_back(element);
+        return arr;
     }
-
+    int i = 0;
+    while(i < n && arr[i] < element) i++;
+    arr.insert(arr.begin() + i, element);
     return arr;
 }
 
