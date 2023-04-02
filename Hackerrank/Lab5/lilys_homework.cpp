@@ -34,11 +34,28 @@ int partition(vector<int>& arr, int low, int high)
     return i + 1;
 }
 
+void insertionSort(vector<int>& arr, int low, int high){
+    for(int i = low + 1; i <= high; i++){
+        int key = arr[i];
+        int j = i - 1;
+        while(j >= low && arr[j] > key){
+            arr[j+1] = arr[j];
+            j--;
+        }
+        arr[j+1] = key;
+    }
+}
+
 void quickSort(vector<int>& arr, int low, int high){
     if(low < high){
-        int partition_index = partition(arr, low, high);
-        quickSort(arr, low, partition_index - 1);
-        quickSort(arr, partition_index + 1, high);
+        if(high - low < 10){
+            insertionSort(arr, low, high);    
+        }
+        else{
+            int partition_index = partition(arr, low, high);
+            quickSort(arr, low, partition_index - 1);
+            quickSort(arr, partition_index + 1, high);
+        }
     }
 }
 
