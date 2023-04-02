@@ -13,52 +13,6 @@ string ltrim(const string &);
 string rtrim(const string &);
 vector<string> split(const string &);
 
-void swap(int *xp, int *yp)
-{
-    int temp = *xp;
-    *xp = *yp;
-    *yp = temp;
-}
-
-int partition(vector<int>& arr, int low, int high)
-{
-    int pivot = arr[high];
-    int i = low - 1;
-    for(int j = low; j <= high; j++){
-        if(arr[j] < pivot){
-            i++;
-            swap(arr[i], arr[j]);
-        }
-    }
-    swap(arr[i+1], arr[high]);
-    return i + 1;
-}
-
-void insertionSort(vector<int>& arr, int low, int high){
-    for(int i = low + 1; i <= high; i++){
-        int key = arr[i];
-        int j = i - 1;
-        while(j >= low && arr[j] > key){
-            arr[j+1] = arr[j];
-            j--;
-        }
-        arr[j+1] = key;
-    }
-}
-
-void quickSort(vector<int>& arr, int low, int high){
-    if(low < high){
-        if(high - low < 10){
-            insertionSort(arr, low, high);    
-        }
-        else{
-            int partition_index = partition(arr, low, high);
-            quickSort(arr, low, partition_index - 1);
-            quickSort(arr, partition_index + 1, high);
-        }
-    }
-}
-
 int binarySearch(vector<int>& arr, int element, int low, int high){
     if(low > high){
         return -1;
@@ -131,7 +85,7 @@ int lilysHomework(vector<int> arr){
     
     // Create a copy of the array and sort it in ascending order
     vector<int> arr_copy(arr);
-    quickSort(arr_copy, 0, arr_length - 1);    
+    sort(arr.begin(), arr.end());
     
     // Get sorted positions of each element in the sorted array(in the ascending order)
     unordered_map<int, pair<int, bool>> sorted_map =  getSortedMap(arr, arr_copy);
