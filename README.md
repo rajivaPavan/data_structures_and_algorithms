@@ -32,6 +32,6 @@ This respository contains my solutions to various data structures and algorithms
     This folder contains my solutions to various problems on Hackerrank.
 
 #### Sorting
-📖 Lily's Homework  [Problem](https://www.hackerrank.com/challenges/lilys-homework/problem) 🤔  - [Solution](https://github.com/rajivaPavan/data_structures_and_algorithms/blob/master/Hackerrank/Lab5/lilys_homework.cpp) 💡
+📖 Lily's Homework  [Problem](https://www.hackerrank.com/challenges/lilys-homework/problem) 🤔  - [Solution](https://github.com/rajivaPavan/data_structures_and_algorithms/tree/master/Hackerrank/Lab5) 💡
 
  

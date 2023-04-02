@@ -28,5 +28,5 @@ Read more : https://www.baeldung.com/cs/quicksort-time-complexity-worst-case
 **For small inputs, insertion sort is faster than quick sort**. By combining insertion sort and quicksort, the overhead of quicksort can be reduced and the overall performance of the algorithm can be improved. As done in this [code](https://github.com/rajivaPavan/data_structures_and_algorithms/blob/107375e39dbac6b287000769a89045955d62d78c/Hackerrank/Lab5/lilys_homework.cpp)
 
 ### 📚 Resources
-- [Explanation & Solution 🌐](https://www.geeksforgeeks.org/minimum-number-of-swaps-required-to-sort-an-array-set-2/?ref=lbp)
+- [Explanation & Solution to the hackerrank problem 🌐](https://www.geeksforgeeks.org/minimum-number-of-swaps-required-to-sort-an-array-set-2/?ref=lbp)
   
