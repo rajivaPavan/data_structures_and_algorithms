@@ -4,12 +4,13 @@ This respository contains my solutions to various data structures and algorithms
 ## Table of Contents
 - [📔 Data Structures and Algorithms](#-data-structures-and-algorithms)
   - [Table of Contents](#table-of-contents)
-      - [📚 Sorting](#-sorting)
+    - [📚 Sorting](#-sorting)
       - [📊 Running Median](#-running-median)
     - [ Hackerrank](#-hackerrank)
-      - [Sorting](#sorting)
+      - [- Sorting](#--sorting)
+    - [📚 Stack](#-stack)
 
-#### 📚 Sorting
+### 📚 Sorting
     This folder contains implementations of some sorting algorithms.
 - Bubble Sort
 - Optimized Bubble Sort
@@ -31,7 +32,11 @@ This respository contains my solutions to various data structures and algorithms
 ### <img src="https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/160_Hackerrank_logo_logos-512.png" width="32" height="32" alt="Hackerrank" title="Hackerrank" /> Hackerrank
     This folder contains my solutions to various problems on Hackerrank.
 
-#### Sorting
+#### - Sorting
 📖 Lily's Homework  [Problem](https://www.hackerrank.com/challenges/lilys-homework/problem) 🤔  - [Solution](https://github.com/rajivaPavan/data_structures_and_algorithms/tree/master/Hackerrank/Lab5) 💡
+
+
+### 📚 Stack
+    The folder contains the implementation of a stack data structure using arrays and linked lists. 
 
  
