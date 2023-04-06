@@ -6,3 +6,22 @@ cmake-build-debug/
 # Ignore word files and pdfs
 *.docx
 *.pdf
+
+# Ignore compiled cpp files
+*.o
+*.out
+*.exe
+
+# Ignore tex files
+*.aux
+*.log
+*.toc
+*.bbl
+*.blg
+*.dvi
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+*.lof
+*.lot
+*.tex
