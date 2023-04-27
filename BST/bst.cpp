@@ -5,16 +5,7 @@ struct node
 {
     int key;
     struct node *left, *right;
-};
-
-// Find node with min value
-struct node *minValueNode(struct node *node){
-    struct node *temp = node;
-    while(temp -> left != nullptr){
-        temp = node -> left;
-    }
-    return temp;
-}   
+}; 
 
 // Inorder traversal
 void traverseInOrder(struct node *root)
@@ -30,12 +21,12 @@ void traverseInOrder(struct node *root)
 // Insert a node
 struct node *insertNode(struct node *node, int key)
 {
-    if(node == nullptr){
+    if(node == NULL){
         // create new node and point to *node
         struct node *newNode = new struct node;
         newNode -> key = key;
-        newNode -> left = nullptr;
-        newNode -> right = nullptr;
+        newNode -> left = NULL;
+        newNode -> right = NULL;
         return newNode;
     }
     else if(key <= node -> key){
@@ -51,34 +42,44 @@ struct node *insertNode(struct node *node, int key)
     return node;
 }
 
+// Find node with min value
+struct node *minValueNode(struct node *node){
+    struct node *temp = node;
+    while(temp && temp -> left != NULL){
+        temp = node -> left;
+    }
+    return temp;
+}  
+
 // Deleting a node
 struct node *deleteNode(struct node *root, int key)
 {
-    if(root == nullptr){
+    if(root == NULL){
         // no node to delete
-        delete root;
-        root = NULL;
         return root;
     }
     else if(key < root -> key){
-        struct node *temp = root;
-        root = root -> right;
-        delete temp;
+        root -> left = deleteNode(root -> left, key);
     }
     else if(key > root -> key){
-        struct node *temp = root;
-        root = root -> left;
-        delete temp;
+        root -> right = deleteNode(root -> right, key);
     }
     else{
+        // node has no child
+        if (root->left == NULL && root->right == NULL)
+            return NULL;
         // node to delete found
-        if(root -> left == nullptr){
+        else if(root -> left == NULL){
             // new root of the sub tree will be the node on the right of the deleted node
-            return root -> right;   
+            struct node *temp = root -> right;
+            free(root);
+            return temp;   
         }
-        else if(root -> right == nullptr){
+        else if(root -> right == NULL){
             // new root of the sub tree will be the node on the left of the deleted node
-            return root -> left;
+            struct node *temp = root -> left;
+            free(root);
+            return temp; 
         }
         struct node *temp = minValueNode(root -> right);
         root -> key = temp -> key;
