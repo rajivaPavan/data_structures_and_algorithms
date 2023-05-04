@@ -29,19 +29,15 @@ void buildHeap(int arr[], int n)
       heapify(arr, n, i);
 }
   
-void displayArray(int arr[], int n);
-
 // implementing heap sort
 void heapSort(int arr[], int n)
 {
    // build heap
    buildHeap(arr, n);
 
-   displayArray(arr, n);
-  
    // extracting elements from heap one by one
    for(int i= n-1; i>0; i--){
-      cout << "i = " << i << endl;
+
       // exchange current root with last leaf
       swap(arr[0], arr[i]);
   
@@ -61,20 +57,16 @@ void displayArray(int arr[], int n)
 // main program
 int main()
 {
-   // // Taking input from user
-   // int n;
-   // cout << "Enter the array size:";
-   // cin >> n;
-   // int heap_arr[n];
-   // cout << "Enter the array elements:";
-   // for(int i=0; i<n; i++)
-   //    cin >> heap_arr[i];
-   // cout << endl;
-
-   int heap_arr[] = {4,17,3,12,9,6};
-   int n = sizeof(heap_arr)/sizeof(heap_arr[0]);
-   
-
+   // Taking input from user
+   int n;
+   cout << "Enter the array size:";
+   cin >> n;
+   int heap_arr[n];
+   cout << "Enter the array elements:";
+   for(int i=0; i<n; i++)
+      cin >> heap_arr[i];
+   cout << endl;
+  
    cout<<"Input array"<<endl;
    displayArray(heap_arr,n);
   
