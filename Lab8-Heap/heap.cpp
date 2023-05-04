@@ -7,18 +7,18 @@ void heapify(int arr[], int n, int root)
    // build heapify
    int left = 2*root + 1;
    int right = 2*root + 2;
+   int larger = root;
 
-   // find greater element between left child and right child
-   if(left < n && right < n){
-      int greaterChild = arr[left] > arr[right] ? left : right;
-
-      // if greater child is greater than root swap
-      if(arr[greaterChild] > arr[root]){
-         swap(arr[greaterChild], arr[root]);
-         // call heapify on the greater child
-         heapify(arr, n, greaterChild);
-      }  
-   } 
+   if(left < n && arr[left] > arr[larger])
+      larger = left;
+   
+   if(right < n && arr[right] > arr[larger])
+      larger = right;
+   
+   if(larger != root){
+      swap(arr[root], arr[larger]);
+      heapify(arr, n, larger);
+   }
 }
 
 // function to build min heap
