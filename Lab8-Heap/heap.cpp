@@ -21,7 +21,7 @@ void heapify(int arr[], int n, int root)
    }
 }
 
-// function to build min heap
+// function to build heap
 void buildHeap(int arr[], int n)
 {
    // build heapify
