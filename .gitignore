@@ -25,3 +25,7 @@ cmake-build-debug/
 *.lof
 *.lot
 *.tex
+
+# Ignore images
+*.png
+*.jpg
