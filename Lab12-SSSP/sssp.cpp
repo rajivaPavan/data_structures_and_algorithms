@@ -5,10 +5,21 @@
 #include <queue>
 using namespace std;
 
+#define PII pair<int, int>
 #define INFINITY 9999999
 
 // Number of nodes in the graph
 #define N 6
+
+class Compare {
+public:
+    bool operator()(PII below, PII above)
+    {
+        if(below.second < above.second)
+            return true;
+        return false;
+    }
+};
 
 void dijkstra(int graph[N][N], int source, int* distance);
 
@@ -43,7 +54,7 @@ int main(){
 
 // Dijkstra's algorithm implementation
 void dijkstra(int graph[N][N], int source, int* distance){
-    priority_queue<int> pq;
+    priority_queue<PII, vector<PII>, Compare> pq;
     // initialize distance of all nodes to infinity
     for(int i = 0; i < N; i++){
         distance[i] = INFINITY;
@@ -51,10 +62,11 @@ void dijkstra(int graph[N][N], int source, int* distance){
 
     // distance of source node from itself is 0
     distance[source] = 0;
-    pq.push(source);
+    pq.push({source, distance[source]});
 
     while(!pq.empty()){
-        int u = pq.top(); // visited edge
+        PII min_dist_node = pq.top(); // visited edge
+        int u = min_dist_node.first;
         pq.pop(); // remove the visited edge from the queue
         for(int v = 0; v < N; v++){ 
             // adjacent nodes of the visited edge
@@ -62,10 +74,12 @@ void dijkstra(int graph[N][N], int source, int* distance){
                 // relax the edge
                 if(distance[v] > distance[u] + graph[u][v]){
                     distance[v] = distance[u] + graph[u][v];
-                    pq.push(v);
+                    pq.push({v, distance[v]});
                 }
             }
         }
     }
 }
+
+
  
