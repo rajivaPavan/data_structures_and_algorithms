@@ -5,16 +5,65 @@ using namespace std;
 #define N 6
 
 int** initializeGraph();
-void printMST();
-int** primsMST(int** graph);
+void printGraph(int** graph, int n);
+int** primsMST(int** graph, int n_vertices);
+pair<int, int> minSafeEdge(vector<pair<int, int>> edges, bool mstSet[]);
 
 int main(){
     int** graph = initializeGraph();
-    primsMST(graph);
-    
+    int** mst = primsMST(graph, N);
+    printGraph(mst, N);
     return 0;
 }
 
+/// @param graph a connect and undirected graph
+/// @return a minimum spanning tree
+int** primsMST(int** graph, const int n_vertices){
+    // set of vertices in MST;
+    bool mstVertices[n_vertices];
+   
+    // parent of vertices in sub-trees
+    int parent[n_vertices];
+
+    // start with 0 as the root node
+    parent[0] = 0; 
+    mstVertices[0] = true;
+
+    // edges from parent vertices to fringe vertices
+    vector<pair<int, int>> edges;
+
+    // go through all fringe vertices
+    for(int i = 0; i < n_vertices - 1; i++){
+        // get minimum edge connected to fringe vertex from a vertex in the tree
+        pair<int, int> edge = minSafeEdge(edges, mstVertices);
+        
+        // add first as the parent of the second
+        parent[edge.second] = edge.first;
+
+        // add second to the mst vertices set
+        mstVertices[edge.second] = true;
+    }
+    
+}
+
+/// @brief Gets minimum edge connected to fringe vertex from a vertex in the tree
+/// @param edges 
+/// @param mstSet array of vertices in the mst
+/// @return edge with minimum weight to be added to the mst. 
+/// pair : first - mst vertex, second - fringe vertex to be added
+pair<int, int> minSafeEdge(vector<pair<int, int>> edges, bool mstSet){
+
+}
+
+/// @brief prints the edges of the given graph
+/// @param graph adjacency matrix
+/// @param n number of vertices
+void printGraph(int** graph, int n){
+    cout << "The graph is a follows: " << endl;
+    
+}
+
+/// @return a hard coded graph adjacency matrix of 6 x 6
 int** initializeGraph(){
     int graph[N][N] = {
         {0,3,0,0,0,1},
@@ -31,50 +80,7 @@ int** initializeGraph(){
         for(int j = 0; j < N; j++)
             G[i][j] = graph[i][j];
     }
-
+    
     return G;
 }
-
-int** primsMST(int** graph){
-    bool vertices[N];
-    for (int i = 0; i < N; i++)
-    {
-        vertices[i] = false; // not in MST yet
-    }
-
-    int mst_weight = 0;
-
-    // start with 0
-    for (int i = 0; i < N; i++)
-    {
-        vertices[i] = true; // visit vertex
-        // get neighbour with least edge
-        int minEdgeNeighbour = -1;
-        for(int j = 0; j < N; j++){
-            if(vertices[j] == true)
-                continue;
-            
-            if(j != i)
-                continue;
-
-            if((graph[i][j] > 0) && 
-                 (minEdgeNeighbour > graph[i][j]))
-            {
-                minEdgeNeighbour = j; // closest vertex with respect to vertex i
-            }
-        }
-
-        // if not already in MST
-        if(vertices[minEdgeNeighbour] == false){
-            vertices[minEdgeNeighbour] = true; // add neighbour to MST
-            mst_weight += graph[i][minEdgeNeighbour]; // add mst weight to MST
-        }
-
-    }
-    
-    cout << "Weight of MST = " << mst_weight << endl;
-}
-
-
-
 
